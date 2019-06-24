@@ -1,0 +1,80 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.entertainment.showflix"
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding.enabled = true
+}
+kapt {
+    correctErrorTypes true
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "com.android.support:design:$support_version"
+    implementation "com.android.support:support-v4:$support_version"
+    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support.constraint:constraint-layout:$constraint"
+    implementation "com.android.support:recyclerview-v7:$support_version"
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    kapt "android.arch.lifecycle:compiler:$lifecycle"
+    implementation "android.arch.lifecycle:runtime:$lifecycle"
+    implementation "android.arch.lifecycle:extensions:$lifecycle"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+
+    //RXjava and android
+    implementation "io.reactivex.rxjava2:rxjava:$rxjavaversion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroidversion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxadapterversion"
+
+    // Room Database
+    implementation "android.arch.persistence.room:runtime:$rootProject.room_version"
+    kapt "android.arch.persistence.room:compiler:$rootProject.room_version"
+    implementation "android.arch.persistence.room:rxjava2:$rootProject.room_version"
+
+    // dagger
+    implementation "com.google.dagger:dagger:$dagger"
+    implementation "com.google.dagger:dagger-android:$dagger"
+    kapt "com.google.dagger:dagger-compiler:$dagger"
+    kapt "com.google.dagger:dagger-android-processor:$dagger"
+    implementation "com.google.dagger:dagger-android-support:$dagger"
+
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //shimmer effect
+    implementation 'com.facebook.shimmer:shimmer:0.4.0'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.10.0'
+    testImplementation 'org.mockito:mockito-inline:2.10.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
