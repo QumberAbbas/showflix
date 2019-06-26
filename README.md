@@ -1,7 +1,7 @@
 # Showflix
 
 ### Description
-Watch Netflix movies &amp; TV shows online or stream right to your smart TV, game console, PC, Mac, mobile, tablet and more.
+Showflix application fetches the movies (title, albums, picture) and render it natively.
 
 ### Architecture
 App is designed using the MVVM Architecture. For the persistance used the Room Database.
